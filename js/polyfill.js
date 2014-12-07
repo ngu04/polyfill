@@ -34,8 +34,7 @@ if (!Array.prototype.indexOf){
     };
 }
 
-function functionBind(){
-    if (typeof Function.prototype.bind !=='undefined') { return; }
+if (!Function.prototype.bind) {
     Function.prototype.bind = function (oThis) {
         var aArgs = Array.prototype.slice.call(arguments, 1),
             fToBind = this,
@@ -53,6 +52,12 @@ function functionBind(){
 if (typeof String.prototype.trim !== 'function') {
     String.prototype.trim = function() {
         return this.replace(/^\s+|\s+$/g, '');
+    };
+}
+
+if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+        return this.indexOf(suffix, this.length - suffix.length) !== -1;
     };
 }
 
